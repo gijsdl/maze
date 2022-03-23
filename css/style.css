@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #788fd7;
+    margin: 0;
+}
+
+main {
+    padding: 0;
+}
+
+.maze {
+    display: grid;
+    height: 100vh;
+    width: 100vh;
+    background-color: white;
+    margin: 0 auto 0 auto;
+}
+
+.cell {
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    background-color: white;
+    transition: all 20ms linear;
+}
+
+.visited{
+    background-color: lightblue;
+}
