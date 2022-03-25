@@ -29,7 +29,6 @@ class Cell{
         allNeighbors.push(cellList[getIndex(this.x + 1, this.y)]);
         allNeighbors.push(cellList[getIndex(this.x, this.y +1)]);
         allNeighbors.push(cellList[getIndex(this.x - 1, this.y)]);
-        console.log(allNeighbors);
 
         allNeighbors.forEach((neighbor) =>{
            if (neighbor && !neighbor.viseted){
@@ -54,5 +53,6 @@ class Cell{
     setVisited(){
         this.viseted = true;
         this.getElement().classList.add("visited");
+        this.getElement().classList.add("current");
     }
 }

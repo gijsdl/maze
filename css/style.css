@@ -13,20 +13,28 @@ main {
 
 .maze {
     display: grid;
-    height: 100vh;
-    width: 100vh;
-    background-color: white;
-    margin: 0 auto 0 auto;
+    height: 90vh;
+    width: 106vh;
+    background-color: #788fd7;
+    margin: 35px auto 35px auto;
 }
 
 .cell {
     height: 100%;
     width: 100%;
     border: 1px solid black;
-    background-color: white;
+    background-color: #79B5ED;
     transition: all 20ms linear;
+}
+
+.fill{
+    background-color: #788fd7;
 }
 
 .visited{
     background-color: lightblue;
+}
+
+.current{
+    background-color: #123456;
 }

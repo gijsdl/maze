@@ -10,26 +10,49 @@ let drawMazeTime;
 setup();
 
 function setup() {
-    mazeDiv.style.gridTemplateColumns = `repeat(${size}, 1fr`;
+    mazeDiv.style.gridTemplateColumns = `repeat(${size +2}, 1fr`;
     mazeDiv.style.gridTemplateRows = `repeat(${size}, 1fr`;
+    const cellFirst = document.createElement("div");
+    cellFirst.classList.add("cell");
+    cellFirst.style.gridArea = `1/1/2/2`
+    cellFirst.style.borderRight = "none";
+    mazeDiv.appendChild(cellFirst);
+    const LeftFill = document.createElement("div");
+    LeftFill.classList.add("fill");
+    LeftFill.style.gridArea = `2/1/${size + 1}/2`
+    LeftFill.style.borderLeft = "none";
+    mazeDiv.appendChild(LeftFill);
     for (let x = 0; x < size; x++) {
         for (let y = 0; y < size; y++) {
             const cellEl = document.createElement("div");
             cellEl.classList.add("cell");
-            cellEl.style.gridArea = `${x + 1}/${y + 1}/${x + 2}/${y + 2}`
+            cellEl.style.gridArea = `${x + 1}/${y + 2}/${x + 2}/${y + 3}`
             mazeDiv.appendChild(cellEl);
             cellList.push(new Cell(x, y, cellEl));
         }
     }
+    const rightFill = document.createElement("div");
+    rightFill.classList.add("fill");
+    rightFill.style.gridArea = `1/${size + 2}/${size}/${size +3}`
+    rightFill.style.borderRight = "none";
+    mazeDiv.appendChild(rightFill);
+    const cellLast = document.createElement("div");
+    cellLast.classList.add("cell");
+    cellLast.style.gridArea = `${size}/${size + 2}/${size + 1}/${size + 3}`
+    cellLast.style.borderLeft = "none";
+    mazeDiv.appendChild(cellLast);
 }
+
 startMaze();
 function startMaze(){
+    cellList[0].walls[3] = false;
+    cellList[cellList.length - 1].walls[1] = false;
     current = cellList[0];
     current.setVisited();
     stack.push(current);
     drawMazeTime = setInterval(()=>{
         drawMaze();
-    }, 10);
+    }, 1);
 }
 
 
@@ -41,9 +64,9 @@ function drawMaze(){
         }
         cell.show();
     })
+    current.getElement().classList.remove("current");
     if (visitedLeft) {
         const next = current.checkNeighbors();
-        // console.log(next)
         if (next) {
             next.setVisited();
             stack.push(next);
@@ -51,10 +74,13 @@ function drawMaze(){
             current = next;
         } else if (stack.length > 0) {
             current = stack.pop();
+            current.getElement().classList.add("current");
         }
     }else {
         clearInterval(drawMazeTime);
-        console.log("maze drawn")
+        cellList.forEach((cell) =>{
+            cell.getElement().classList.remove("visited");
+        })
     }
 }
 
