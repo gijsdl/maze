@@ -5,32 +5,36 @@ class Cell{
         this.element = element;
         this.viseted = false;
         this.walls = [true, true, true, true];
+        this.allNeighbors = [];
+        this.totalLength = 0;
+        this.stepsTaken = 0;
+        this.heuristic = 0;
+        this.previous = undefined;
     }
 
     show() {
         if (!this.walls[0]) {
-            this.getElement().style.borderTop = "none";
+            this.element.style.borderTop = "none";
         }
         if (!this.walls[1]) {
-            this.getElement().style.borderRight = "none";
+            this.element.style.borderRight = "none";
         }
         if (!this.walls[2]) {
-            this.getElement().style.borderBottom = "none";
+            this.element.style.borderBottom = "none";
         }
         if (!this.walls[3]) {
-            this.getElement().style.borderLeft = "none";
+            this.element.style.borderLeft = "none";
         }
     }
 
     checkNeighbors() {
         const neighbors = [];
-        const allNeighbors = [];
-        allNeighbors.push(cellList[getIndex(this.x, this.y -1)]);
-        allNeighbors.push(cellList[getIndex(this.x + 1, this.y)]);
-        allNeighbors.push(cellList[getIndex(this.x, this.y +1)]);
-        allNeighbors.push(cellList[getIndex(this.x - 1, this.y)]);
+        this.allNeighbors.push(cellList[getIndex(this.x - 1, this.y)]);//boven
+        this.allNeighbors.push(cellList[getIndex(this.x, this.y +1)]);//rechts
+        this.allNeighbors.push(cellList[getIndex(this.x + 1, this.y)]);//beneden
+        this.allNeighbors.push(cellList[getIndex(this.x, this.y -1)]);//links
 
-        allNeighbors.forEach((neighbor) =>{
+        this.allNeighbors.forEach((neighbor) =>{
            if (neighbor && !neighbor.viseted){
                neighbors.push(neighbor);
            }
@@ -45,6 +49,19 @@ class Cell{
 
     }
 
+    checkNeighborsPath(){
+        const neighbors= [];
+        for (let i = 0; i < 4; i++){
+            if (this.allNeighbors[i] && !this.walls[i]){
+                neighbors.push(this.allNeighbors[i]);
+            }
+            console.log(this.allNeighbors[i]);
+            console.log(this.walls[i])
+        }
+        this.allNeighbors = neighbors;
+        console.log(neighbors)
+    }
+
 
     getElement(){
         return this.element;
@@ -52,7 +69,16 @@ class Cell{
 
     setVisited(){
         this.viseted = true;
-        this.getElement().classList.add("visited");
-        this.getElement().classList.add("current");
+        this.element.classList.add("visited");
+        this.element.classList.add("current");
+    }
+
+    removeClasses(){
+        this.element.classList = "cell"
+    }
+
+    removeExcesClasses(){
+        this.element.classList.remove("visited");
+        this.element.classList.remove("current");
     }
 }

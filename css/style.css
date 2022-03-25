@@ -14,26 +14,27 @@ main {
     padding: 0;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-.inputs-wrapper{
+.inputs-wrapper {
     grid-area: 1/1/2/2;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
+
 .maze-create {
     margin: auto;
     width: 50%;
 }
 
-.make-map{
+.make-map {
     text-align: center;
 }
 
-.maze-create-inputs{
+.maze-create-inputs {
     display: flex;
     justify-content: space-around;
 }
@@ -85,14 +86,18 @@ main {
     transition: all 20ms linear;
 }
 
-.fill{
+.fill {
     background-color: #788fd7;
 }
 
-.visited{
+.visited {
     background-color: lightblue;
 }
 
-.current{
+.current {
     background-color: #123456;
+}
+
+.path {
+    background-color: blue;
 }
