@@ -8,8 +8,66 @@ body {
 }
 
 main {
+    display: grid;
+    grid-template-rows: 100vh;
+    grid-template-columns: 1fr 2fr 1fr;
     padding: 0;
 }
+
+.hidden{
+    display: none;
+}
+
+.inputs-wrapper{
+    grid-area: 1/1/2/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.maze-create {
+    margin: auto;
+    width: 50%;
+}
+
+.make-map{
+    text-align: center;
+}
+
+.maze-create-inputs{
+    display: flex;
+    justify-content: space-around;
+}
+
+.size-slider {
+    -webkit-appearance: none;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.size-slider:hover {
+    opacity: 1;
+}
+
+.size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.size-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
 
 .maze {
     display: grid;
