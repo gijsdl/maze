@@ -9,16 +9,26 @@
 <main>
     <div class="inputs-wrapper">
         <div class="maze-create">
-            <h1 class="make-map">Make maze</h1>
+            <h1>Make maze</h1>
             <div class="maze-create-inputs">
-                <input type="range" min="5" max="50" class="size-slider" value="10">
-                <p class="size-value"></p>
-                <button class="make-map-btn">maak maze</button>
+                <label> size  <span class="size-value"></span>
+                    <input type="range" min="5" max="50" class="size-slider" value="10">
+                </label>
+
+                <button class="make-map-btn">make maze</button>
             </div>
         </div>
     </div>
     <div class="maze">
 
+    </div>
+    <div class="run-wrapper hidden">
+        <div class="run-maze">
+            <h1>Run Maze</h1>
+            <div class="run-create-inputs">
+                <button class="run-maze-btn">run maze</button>
+            </div>
+        </div>
     </div>
 </main>
 <script src="js/cell.js"></script>

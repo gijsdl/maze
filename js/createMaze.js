@@ -39,7 +39,7 @@ function drawMaze() {
         cellList.forEach((cell) => {
             cell.removeClasses();
         });
-        startPathFinding();
+        runWrapper.classList.remove("hidden");
     }
 }
 

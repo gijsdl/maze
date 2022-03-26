@@ -10,6 +10,7 @@ class Cell{
         this.stepsTaken = 0;
         this.heuristic = 0;
         this.previous = undefined;
+        this.neighborsPath = [];
     }
 
     show() {
@@ -55,11 +56,8 @@ class Cell{
             if (this.allNeighbors[i] && !this.walls[i]){
                 neighbors.push(this.allNeighbors[i]);
             }
-            console.log(this.allNeighbors[i]);
-            console.log(this.walls[i])
         }
-        this.allNeighbors = neighbors;
-        console.log(neighbors)
+        this.neighborsPath = neighbors;
     }
 
 
@@ -80,5 +78,12 @@ class Cell{
     removeExcesClasses(){
         this.element.classList.remove("visited");
         this.element.classList.remove("current");
+    }
+
+    reset(){
+        this.totalLength = 0;
+        this.stepsTaken = 0;
+        this.heuristic = 0;
+        this.previous = undefined;
     }
 }

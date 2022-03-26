@@ -1,19 +1,24 @@
 let pathTimer;
-const openSet = [];
-const closedSet = [];
+let openSet = [];
+let closedSet = [];
 let start;
 let end;
 let path = [];
 let done = false;
 
 function startPathFinding() {
+    runMazeBtn.disabled = true;
     start = cellList[0];
     end = cellList[cellList.length - 1];
-    openSet.push(start);
+    openSet = [];
+    closedSet = [];
     done = false;
     cellList.forEach((cell) => {
-       cell.checkNeighborsPath();
+        cell.reset();
+        cell.checkNeighborsPath();
     });
+    openSet.push(start);
+
     pathTimer = setInterval(() => {
         drawPathFinding();
     }, 1);
@@ -48,13 +53,12 @@ function drawPathFinding() {
         if (current === end) {
             clearInterval(pathTimer);
             done = true;
-            console.log("done");
         }
 
         removeFromArray(openSet, current);
         closedSet.push(current);
 
-        current.allNeighbors.forEach((neighbor) => {
+        current.neighborsPath.forEach((neighbor) => {
             if (neighbor) {
                 if (!closedSet.includes(neighbor)) {
                     let tempStepTaken = current.stepsTaken + 1;
@@ -98,7 +102,6 @@ function drawPathFinding() {
         path.push(temp.previous);
         temp = temp.previous;
     }
-    console.log(path)
     path.forEach((cell) => {
         cell.getElement().classList.add("path");
     });
@@ -107,5 +110,6 @@ function drawPathFinding() {
         cellList.forEach((cell) => {
             cell.removeExcesClasses();
         });
+        runMazeBtn.disabled = false;
     }
 }

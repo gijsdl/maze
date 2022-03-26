@@ -3,6 +3,8 @@ const mazeDiv = document.querySelector(".maze");
 const mazeSizeSlider = document.querySelector(".size-slider");
 const mazeSizeValue = document.querySelector(".size-value");
 const makeMapBtn = document.querySelector(".make-map-btn");
+const runMazeBtn = document.querySelector(".run-maze-btn");
+const runWrapper = document.querySelector(".run-wrapper");
 
 let size;
 let mapSize;
@@ -24,16 +26,21 @@ function setup() {
         }
     })
     makeMapBtn.addEventListener("click", mazeSetup);
-
+    runMazeBtn.addEventListener("click", startPathFinding);
 }
 
 function mazeSetup() {
+    runWrapper.classList.add("hidden");
     mapSize = size;
     cellList = [];
     stack = [];
     if (drawMazeTimer){
         clearInterval(drawMazeTimer);
     }
+    if (pathTimer){
+        clearInterval(pathTimer);
+    }
+    runMazeBtn.disabled = false;
     mazeDiv.textContent = "";
     mazeDiv.style.gridTemplateColumns = `repeat(${mapSize + 2}, 1fr`;
     mazeDiv.style.gridTemplateRows = `repeat(${mapSize}, 1fr`;

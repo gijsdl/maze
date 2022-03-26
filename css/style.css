@@ -14,10 +14,6 @@ main {
     padding: 0;
 }
 
-.hidden {
-    display: none;
-}
-
 .inputs-wrapper {
     grid-area: 1/1/2/2;
     display: flex;
@@ -25,16 +21,16 @@ main {
     justify-content: space-around;
 }
 
-.maze-create {
+.maze-create, .run-maze {
     margin: auto;
     width: 50%;
 }
 
-.make-map {
+h1 {
     text-align: center;
 }
 
-.maze-create-inputs {
+.maze-create-inputs, .run-create-inputs {
     display: flex;
     justify-content: space-around;
 }
@@ -78,10 +74,17 @@ main {
     margin: 35px auto 35px auto;
 }
 
+.run-wrapper {
+    grid-area: 1/3/2/4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 .cell {
     height: 100%;
     width: 100%;
-    border: 1px solid black;
+    border: 2px solid black;
     background-color: #79B5ED;
     transition: all 20ms linear;
 }
@@ -99,5 +102,9 @@ main {
 }
 
 .path {
-    background-color: blue;
+    background-color: limegreen;
+}
+
+.hidden {
+    display: none;
 }
