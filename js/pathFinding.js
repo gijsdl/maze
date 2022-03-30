@@ -13,12 +13,14 @@ function startPathFinding() {
     openSet = [];
     closedSet = [];
     done = false;
+    cellLast.classList.remove("path");
+    cellFirst.classList.remove("path");
     cellList.forEach((cell) => {
         cell.reset();
         cell.checkNeighborsPath();
     });
     openSet.push(start);
-
+    cellFirst.classList.add("path");
     pathTimer = setInterval(() => {
         drawPathFinding();
     }, 1);
@@ -110,6 +112,7 @@ function drawPathFinding() {
         cellList.forEach((cell) => {
             cell.removeExcesClasses();
         });
+        cellLast.classList.add("path");
         runMazeBtn.disabled = false;
     }
 }

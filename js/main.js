@@ -5,7 +5,8 @@ const mazeSizeValue = document.querySelector(".size-value");
 const makeMapBtn = document.querySelector(".make-map-btn");
 const runMazeBtn = document.querySelector(".run-maze-btn");
 const runWrapper = document.querySelector(".run-wrapper");
-
+let cellFirst;
+let cellLast;
 let size;
 let mapSize;
 let cellList = [];
@@ -44,16 +45,17 @@ function mazeSetup() {
     mazeDiv.textContent = "";
     mazeDiv.style.gridTemplateColumns = `repeat(${mapSize + 2}, 1fr`;
     mazeDiv.style.gridTemplateRows = `repeat(${mapSize}, 1fr`;
-    const cellFirst = document.createElement("div");
+    cellFirst = document.createElement("div");
     cellFirst.classList.add("cell");
     cellFirst.style.gridArea = `1/1/2/2`
     cellFirst.style.borderRight = "none";
     mazeDiv.appendChild(cellFirst);
-    const LeftFill = document.createElement("div");
-    LeftFill.classList.add("fill");
-    LeftFill.style.gridArea = `2/1/${mapSize + 1}/2`
-    LeftFill.style.borderLeft = "none";
-    mazeDiv.appendChild(LeftFill);
+    const leftFill = document.createElement("div");
+    leftFill.classList.add("left-fill");
+    leftFill.style.gridArea = `2/1/${mapSize + 1}/2`
+    leftFill.style.borderLeft = "none";
+    leftFill.innerText = "<--- start";
+    mazeDiv.appendChild(leftFill);
     for (let x = 0; x < mapSize; x++) {
         for (let y = 0; y < mapSize; y++) {
             const cellEl = document.createElement("div");
@@ -64,11 +66,12 @@ function mazeSetup() {
         }
     }
     const rightFill = document.createElement("div");
-    rightFill.classList.add("fill");
+    rightFill.classList.add("right-fill");
     rightFill.style.gridArea = `1/${mapSize + 2}/${mapSize}/${mapSize + 3}`
     rightFill.style.borderRight = "none";
+    rightFill.innerText= "end --->";
     mazeDiv.appendChild(rightFill);
-    const cellLast = document.createElement("div");
+    cellLast = document.createElement("div");
     cellLast.classList.add("cell");
     cellLast.style.gridArea = `${mapSize}/${mapSize + 2}/${mapSize + 1}/${mapSize + 3}`
     cellLast.style.borderLeft = "none";

@@ -89,8 +89,20 @@ h1 {
     transition: all 20ms linear;
 }
 
-.fill {
+.right-fill, .left-fill {
     background-color: #788fd7;
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    font-family: "Verdana";
+    font-size: 1.3em;
+}
+
+.right-fill{
+
+    justify-content: flex-end;
 }
 
 .visited {
