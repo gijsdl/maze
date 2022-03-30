@@ -9,7 +9,7 @@
 <main>
     <div class="inputs-wrapper">
         <div class="maze-create">
-            <h1>Make maze</h1>
+            <h2>Make maze</h2>
             <div class="maze-create-inputs">
                 <label> size:  <span class="size-value"></span>
                     <input type="range" min="5" max="50" class="size-slider" value="20">
@@ -24,15 +24,25 @@
     </div>
     <div class="run-wrapper hidden">
         <div class="run-maze">
-            <h1>Run Maze</h1>
-            <div class="run-create-inputs">
+            <h2>Run Maze</h2>
+            <p>Let the program solve the maze!</p>
+            <div class="run-maze-inputs">
                 <button class="run-maze-btn">run maze</button>
+            </div>
+        </div>
+        <div class="run-maze">
+            <h2>Solve Maze</h2>
+            <p>Solve the maze yourself!</p>
+            <div class="run-maze-inputs">
+                <button class="solve-maze-btn">solve maze</button>
             </div>
         </div>
     </div>
 </main>
 <script src="js/cell.js"></script>
 <script src="js/pathFinding.js"></script>
+<script src="js/player.js"></script>
+<script src="js/playerSolving.js"></script>
 <script src="js/createMaze.js"></script>
 <script src="js/main.js"></script>
 </body>

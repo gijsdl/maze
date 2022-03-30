@@ -3,8 +3,9 @@ const mazeDiv = document.querySelector(".maze");
 const mazeSizeSlider = document.querySelector(".size-slider");
 const mazeSizeValue = document.querySelector(".size-value");
 const makeMapBtn = document.querySelector(".make-map-btn");
-const runMazeBtn = document.querySelector(".run-maze-btn");
 const runWrapper = document.querySelector(".run-wrapper");
+const runMazeBtn = document.querySelector(".run-maze-btn");
+const solveMazeBtn = document.querySelector(".solve-maze-btn");
 let cellFirst;
 let cellLast;
 let size;
@@ -28,6 +29,8 @@ function setup() {
     })
     makeMapBtn.addEventListener("click", mazeSetup);
     runMazeBtn.addEventListener("click", startPathFinding);
+    solveMazeBtn.addEventListener("click", startSolve);
+
 }
 
 function mazeSetup() {

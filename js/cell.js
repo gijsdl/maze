@@ -75,7 +75,7 @@ class Cell{
         this.element.classList = "cell"
     }
 
-    removeExcesClasses(){
+    removeExcessClasses(){
         this.element.classList.remove("visited");
         this.element.classList.remove("current");
     }

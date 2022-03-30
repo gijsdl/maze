@@ -110,7 +110,7 @@ function drawPathFinding() {
 
     if (done){
         cellList.forEach((cell) => {
-            cell.removeExcesClasses();
+            cell.removeExcessClasses();
         });
         cellLast.classList.add("path");
         runMazeBtn.disabled = false;
