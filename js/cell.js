@@ -11,6 +11,7 @@ class Cell{
         this.heuristic = 0;
         this.previous = undefined;
         this.neighborsPath = [];
+        this.timesVisited = 0;
     }
 
     show() {
@@ -28,12 +29,16 @@ class Cell{
         }
     }
 
-    checkNeighbors() {
-        const neighbors = [];
+    getAllNeighbors(){
+        this.allNeighbors = [];
         this.allNeighbors.push(cellList[getIndex(this.x - 1, this.y)]);//boven
         this.allNeighbors.push(cellList[getIndex(this.x, this.y +1)]);//rechts
         this.allNeighbors.push(cellList[getIndex(this.x + 1, this.y)]);//beneden
         this.allNeighbors.push(cellList[getIndex(this.x, this.y -1)]);//links
+    }
+
+    checkNeighbors() {
+        const neighbors = [];
 
         this.allNeighbors.forEach((neighbor) =>{
            if (neighbor && !neighbor.viseted){

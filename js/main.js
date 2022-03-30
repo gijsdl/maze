@@ -81,3 +81,11 @@ function mazeSetup() {
     mazeDiv.appendChild(cellLast);
     startMaze();
 }
+
+function reset(){
+    document.removeEventListener("keydown", checkKey);
+    cellList.forEach((cell)=>{
+        cell.removeClasses();
+        cell.getElement().style.color = null;
+    })
+}

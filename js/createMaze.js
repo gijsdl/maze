@@ -3,11 +3,16 @@ let current;
 let drawMazeTimer;
 
 function startMaze() {
+    reset();
     cellList[0].walls[3] = false;
     cellList[cellList.length - 1].walls[1] = false;
     current = cellList[Math.floor(Math.random() * cellList.length - 1)];
     current.setVisited();
     stack.push(current);
+
+    cellList.forEach((cell)=>{
+        cell.getAllNeighbors();
+    })
     drawMazeTimer = setInterval(() => {
         drawMaze();
     }, 1);
