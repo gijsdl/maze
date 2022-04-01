@@ -7,7 +7,7 @@ let path = [];
 let done = false;
 
 function startPathFinding() {
-    runMazeBtn.disabled = true;
+    solveMazeBtn.disabled = true;
     start = cellList[0];
     end = cellList[cellList.length - 1];
     openSet = [];
@@ -113,6 +113,6 @@ function drawPathFinding() {
             cell.removeExcessClasses();
         });
         cellLast.classList.add("path");
-        runMazeBtn.disabled = false;
+        solveMazeBtn.disabled = false;
     }
 }

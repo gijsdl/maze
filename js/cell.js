@@ -77,15 +77,18 @@ class Cell {
     }
 
     removeClasses() {
+        const classes = [];
         if (this.element.classList.contains("route-taken")) {
-            this.element.classList = "cell"
-            this.element.classList.add("route-taken");
-        } else if (this.element.classList.contains("route")) {
-            this.element.classList = "cell"
-            this.element.classList.add("route");
-        } else {
-            this.element.classList = "cell"
+           classes.push("route-taken");
         }
+        if (this.element.classList.contains("route")) {
+            classes.push("route");
+        }
+        this.element.classList = "cell"
+        classes.forEach((cssClass)=>{
+            this.element.classList.add(cssClass);
+        });
+
     }
 
     removeExcessClasses() {

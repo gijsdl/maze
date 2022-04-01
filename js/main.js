@@ -28,8 +28,8 @@ function setup() {
         }
     })
     makeMapBtn.addEventListener("click", mazeSetup);
-    runMazeBtn.addEventListener("click", startPathFinding);
-    solveMazeBtn.addEventListener("click", startSolve);
+    solveMazeBtn.addEventListener("click", startPathFinding);
+    runMazeBtn.addEventListener("click", startSolve);
 
 }
 
@@ -90,6 +90,8 @@ function reset(){
         cell.getElement().style.backgroundColor = null;
         cell.getElement().classList = "cell";
     })
+    cellFirst.classList.remove("path");
     cellLast.classList.remove("path");
+    cellFirst.classList.remove("route");
     cellLast.classList.remove("route");
 }
