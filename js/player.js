@@ -33,9 +33,6 @@ class Player {
                 if (next !== cellList[cellList.length - 1]) {
                     this.cell.timesVisited++;
                     this.route.push(this.cell);
-                    console.log("test")
-                    console.log(next);
-                    console.log(this.path[this.path.length - 2])
                     if (next === this.path[this.path.length - 2]) {
                         this.path.pop();
                     } else {
@@ -44,7 +41,8 @@ class Player {
                     this.cell.getElement().classList.add("player");
                     this.route.forEach((cell) => {
                         let times = 0.5 + cell.timesVisited / 10;
-                        cell.getElement().style.backgroundColor = `rgba(50, 205, 50, ${times})`;
+                        cell.getElement().style.backgroundColor = `rgba(205, 50, 50, ${times})`;
+                        cell.getElement().classList.add("route-taken");
                     });
                 } else {
                     this.path.push(next);
@@ -52,9 +50,9 @@ class Player {
                         cell.getElement().style.backgroundColor = null;
                     });
                     this.path.forEach((cell) => {
-                        cell.getElement().classList.add("path");
+                        cell.getElement().classList.add("route");
                     });
-                    cellLast.classList.add("path");
+                    cellLast.classList.add("route");
                     document.removeEventListener("keydown", checkKey);
                 }
             }

@@ -117,6 +117,18 @@ h1 {
     background-color: limegreen;
 }
 
+.route{
+    background-color: red;
+}
+
+.path.route{
+    background-color: purple;
+}
+
+.path.route-taken{
+    background-color: purple !important;
+}
+
 .player{
     background-color: red !important;
 }

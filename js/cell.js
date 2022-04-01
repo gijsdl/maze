@@ -1,4 +1,4 @@
-class Cell{
+class Cell {
     constructor(x, y, element) {
         this.x = x;
         this.y = y;
@@ -29,36 +29,36 @@ class Cell{
         }
     }
 
-    getAllNeighbors(){
+    getAllNeighbors() {
         this.allNeighbors = [];
         this.allNeighbors.push(cellList[getIndex(this.x - 1, this.y)]);//boven
-        this.allNeighbors.push(cellList[getIndex(this.x, this.y +1)]);//rechts
+        this.allNeighbors.push(cellList[getIndex(this.x, this.y + 1)]);//rechts
         this.allNeighbors.push(cellList[getIndex(this.x + 1, this.y)]);//beneden
-        this.allNeighbors.push(cellList[getIndex(this.x, this.y -1)]);//links
+        this.allNeighbors.push(cellList[getIndex(this.x, this.y - 1)]);//links
     }
 
     checkNeighbors() {
         const neighbors = [];
 
-        this.allNeighbors.forEach((neighbor) =>{
-           if (neighbor && !neighbor.viseted){
-               neighbors.push(neighbor);
-           }
+        this.allNeighbors.forEach((neighbor) => {
+            if (neighbor && !neighbor.viseted) {
+                neighbors.push(neighbor);
+            }
         });
 
-        if (neighbors.length > 0){
+        if (neighbors.length > 0) {
             let index = Math.floor(Math.random() * neighbors.length);
             return neighbors[index];
-        }else {
+        } else {
             return undefined;
         }
 
     }
 
-    checkNeighborsPath(){
-        const neighbors= [];
-        for (let i = 0; i < 4; i++){
-            if (this.allNeighbors[i] && !this.walls[i]){
+    checkNeighborsPath() {
+        const neighbors = [];
+        for (let i = 0; i < 4; i++) {
+            if (this.allNeighbors[i] && !this.walls[i]) {
                 neighbors.push(this.allNeighbors[i]);
             }
         }
@@ -66,26 +66,34 @@ class Cell{
     }
 
 
-    getElement(){
+    getElement() {
         return this.element;
     }
 
-    setVisited(){
+    setVisited() {
         this.viseted = true;
         this.element.classList.add("visited");
         this.element.classList.add("current");
     }
 
-    removeClasses(){
-        this.element.classList = "cell"
+    removeClasses() {
+        if (this.element.classList.contains("route-taken")) {
+            this.element.classList = "cell"
+            this.element.classList.add("route-taken");
+        } else if (this.element.classList.contains("route")) {
+            this.element.classList = "cell"
+            this.element.classList.add("route");
+        } else {
+            this.element.classList = "cell"
+        }
     }
 
-    removeExcessClasses(){
+    removeExcessClasses() {
         this.element.classList.remove("visited");
         this.element.classList.remove("current");
     }
 
-    reset(){
+    reset() {
         this.totalLength = 0;
         this.stepsTaken = 0;
         this.heuristic = 0;

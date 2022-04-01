@@ -7,7 +7,6 @@ let path = [];
 let done = false;
 
 function startPathFinding() {
-    reset();
     runMazeBtn.disabled = true;
     start = cellList[0];
     end = cellList[cellList.length - 1];

@@ -4,7 +4,7 @@ function startSolve() {
     reset();
     player = new Player(cellList[0]);
     player.cell.getElement().classList.add("player");
-    cellFirst.classList.add("path");
+    cellFirst.classList.add("route");
     document.addEventListener("keydown", checkKey);
 }
 

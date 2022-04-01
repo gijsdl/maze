@@ -85,7 +85,11 @@ function mazeSetup() {
 function reset(){
     document.removeEventListener("keydown", checkKey);
     cellList.forEach((cell)=>{
+        cell.reset();
         cell.removeClasses();
-        cell.getElement().style.color = null;
+        cell.getElement().style.backgroundColor = null;
+        cell.getElement().classList = "cell";
     })
+    cellLast.classList.remove("path");
+    cellLast.classList.remove("route");
 }
