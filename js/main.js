@@ -30,6 +30,11 @@ function setup() {
     makeMapBtn.addEventListener("click", mazeSetup);
     solveMazeBtn.addEventListener("click", startPathFinding);
     runMazeBtn.addEventListener("click", startSolve);
+    document.addEventListener("keypress", (e)=>{
+        if (e.key === "c"){
+            mazeSetup();
+        }
+    })
 
 }
 
@@ -57,7 +62,7 @@ function mazeSetup() {
     leftFill.classList.add("left-fill");
     leftFill.style.gridArea = `2/1/${mapSize + 1}/2`
     leftFill.style.borderLeft = "none";
-    leftFill.innerText = "<--- start";
+    leftFill.innerText = "<--- Start";
     mazeDiv.appendChild(leftFill);
     for (let x = 0; x < mapSize; x++) {
         for (let y = 0; y < mapSize; y++) {
@@ -72,7 +77,7 @@ function mazeSetup() {
     rightFill.classList.add("right-fill");
     rightFill.style.gridArea = `1/${mapSize + 2}/${mapSize}/${mapSize + 3}`
     rightFill.style.borderRight = "none";
-    rightFill.innerText= "end --->";
+    rightFill.innerText= "End --->";
     mazeDiv.appendChild(rightFill);
     cellLast = document.createElement("div");
     cellLast.classList.add("cell");

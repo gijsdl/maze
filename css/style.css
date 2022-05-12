@@ -3,8 +3,9 @@
 }
 
 body {
-    background-color: #788fd7;
+    background-color: #4273A1;
     margin: 0;
+    font-family: "Segoe UI";
 }
 
 main {
@@ -12,6 +13,15 @@ main {
     grid-template-rows: 100vh;
     grid-template-columns: 1fr 2fr 1fr;
     padding: 0;
+}
+
+button{
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.title{
+    grid-area: 1/1/2/2;
 }
 
 .inputs-wrapper {
@@ -22,6 +32,7 @@ main {
 }
 
 .maze-create, .run-maze {
+    text-align: center;
     margin: auto;
     width: 60%;
 }
@@ -38,11 +49,12 @@ h1 {
 .size-slider {
     -webkit-appearance: none;
     height: 25px;
-    background: #d3d3d3;
+    background: white;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
+    border-radius: 5px;
 }
 
 .size-slider:hover {
@@ -54,14 +66,14 @@ h1 {
     appearance: none;
     width: 25px;
     height: 25px;
-    background: #04AA6D;
+    background: gray;
     cursor: pointer;
 }
 
 .size-slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
-    background: #04AA6D;
+    background: gray;
     cursor: pointer;
 }
 
@@ -70,7 +82,7 @@ h1 {
     display: grid;
     height: 90vh;
     width: 106vh;
-    background-color: #788fd7;
+    background-color: #4273A1;
     margin: 35px auto 35px auto;
 }
 
@@ -90,18 +102,18 @@ h1 {
 }
 
 .right-fill, .left-fill {
-    background-color: #788fd7;
+    background-color: #4273A1;
     display: flex;
     justify-content: flex-start;
     padding: 5px;
     writing-mode: vertical-rl;
     text-orientation: sideways;
-    font-family: "Verdana";
+    font-family: Verdana, serif;
     font-size: 1.3em;
+    align-items: center;
 }
 
 .right-fill{
-
     justify-content: flex-end;
 }
 
